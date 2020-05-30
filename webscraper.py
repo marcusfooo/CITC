@@ -3,9 +3,10 @@ from bs4 import BeautifulSoup
 
 base_url = "https://www.amazon.sg/s?k=" # Base url link
 search_item = input("Enter search input: ") # Search input
+max_page = 20 # Set max number of pages
 
-# Search from pages 1-20
-for page in range(1, 20, 1):
+# Search from pages 1-max_page
+for page in range(1, max_page+1, 1):
     url = base_url+search_item+"&page="+str(page) # Add page number to link
     req = requests.get(url) # Fetch url
     content = req.content # Read url
