@@ -2,7 +2,7 @@ from random import randrange
 from combat import monster 
 
 # Randomly rolls and executes an event
-def roll(hp, attack, steps):
+def roll(hp, attack, steps, game_status):
     roll = randrange(0,100)
 
     if 0 <= roll <= 20:
@@ -35,6 +35,6 @@ def roll(hp, attack, steps):
         print("Your attack doubled in damage, you now have %s attack!" % attack)
 
     else:
-        hp, attack, steps = monster(hp, attack, steps)
+        hp, attack, steps, game_status = monster(hp, attack, steps, game_status)
 
-    return hp,attack,steps
+    return hp,attack,steps,game_status

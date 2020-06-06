@@ -1,6 +1,8 @@
 from random import choice
 from time import sleep
 
+
+# Combat process
 def battle(hp, attack, steps, monster, monsterhp, monsterattack):
 
     while hp > 0 and monsterhp > 0:
@@ -32,7 +34,8 @@ def battle(hp, attack, steps, monster, monsterhp, monsterattack):
             print("%s swings at you!" %monster)
             monsterhp -= attack
             hp -= monsterattack
-        
+
+    # Exit game if player dies   
     if hp < 0:
         print("You have died an honorable death!")
         exit()
@@ -43,7 +46,9 @@ def battle(hp, attack, steps, monster, monsterhp, monsterattack):
     steps += 1
     return hp, attack, steps
 
-def monster(hp, attack, steps):
+
+# Chooses a monster to fight
+def monster(hp, attack, steps, game_status):
     monsterOptions = ["Troll", "Goblin", "Ogre"]
     monster = choice(monsterOptions)
 
@@ -67,4 +72,7 @@ def monster(hp, attack, steps):
         monsterattack = 15
         hp, attack, steps = battle(hp, attack, steps, monster, monsterhp, monsterattack)
 
-    return hp, attack, steps
+        # If goblin king is slain, update game status
+        game_status = 1
+
+    return hp, attack, steps, game_status
